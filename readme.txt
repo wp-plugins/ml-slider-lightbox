@@ -21,14 +21,14 @@ For use with the popular WordPress plugin Meta Slider allowing slides to be open
 
 == Installation ==
 
-Requires: 
-<a href="https://wordpress.org/plugins/ml-slider/">Meta Slider</a> 3.0+
+Requires: <br>
+<a href="https://wordpress.org/plugins/ml-slider/">Meta Slider</a> 3.0+ <br>
 <a href="https://wordpress.org/plugins/simple-lightbox/">Simple Lightbox</a>
 
 The easy way:
 
 1. Go to the Plugins Menu in WordPress
-1. Search for "Meta Slider Simple Lightbox"
+1. Search for "Meta Slider Lightbox"
 1. Click "Install"
 
 The not so easy way:
