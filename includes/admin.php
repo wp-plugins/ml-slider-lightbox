@@ -7,9 +7,12 @@ class MetasliderLightboxAdmin {
      */
     public function __construct() {
 
+        include_once(ABSPATH.'wp-admin/includes/plugin.php');
+
         $aFields = [];
         $slider = [];
 
+        $this->get_active_plugins();
         $this->metaslider_check_lightbox_install();
         $this->metaslider_lightbox_settings($aFields, $slider);
         $this->setup_admin_actions();
@@ -18,12 +21,42 @@ class MetasliderLightboxAdmin {
     }
 
     /**
+     * Establish whether there are any of the supported lightbox plugins active and return the first
+     */
+    public function get_active_plugins() {
+
+        $required_plugins = array(
+            'metaslider' => is_plugin_active( 'ml-slider/ml-slider.php')
+        );
+
+        $supported_lightbox_plugins = array(
+            'simple_lightbox' => is_plugin_active( 'simple-lightbox/main.php'),
+            'wp_lightbox_2' => is_plugin_active( 'wp-lightbox-2/wp-lightbox-2.php'),
+            'lightbox_plus' => is_plugin_active( 'lightbox-plus/lightboxplus.php'),
+            'wp_video_lightbox' => is_plugin_active( 'lightbox-plus/lightboxplus.php')
+        );
+
+        $active_plugins = array(
+            'active_light_box_plugin' => array_search(true, $supported_lightbox_plugins),
+            'wp_video_lightbox' => $supported_lightbox_plugins['wp_video_lightbox'],
+            'metaslider' => $required_plugins['metaslider']
+        );
+
+        return $active_plugins;
+
+    }
+
+
+    /**
      * Display a warning on the plugins page if Meta Slider or Simple lightbox isn't activated
      */
     public function metaslider_check_lightbox_install() {
-
+        
         global $pagenow;
-        if ( !is_plugin_active( 'simple-lightbox/main.php') || !is_plugin_active( 'ml-slider/ml-slider.php' ) && $pagenow == 'plugins.php' ) {        
+
+        $active_plugins = $this->get_active_plugins();
+
+        if ( empty( $active_plugins['active_light_box_plugin'] ) || $active_plugins['metaslider'] == false And $pagenow == 'plugins.php' ) {        
             add_action('admin_notices', array( $this, 'metaslider_lightbox_dependency_warning'), 10, 3);
         }
 
@@ -36,18 +69,34 @@ class MetasliderLightboxAdmin {
 
         ?>
         <div class="error">
-            <p><?php _e( 'Meta Slider Lightbox requires both Meta Slider and Simple Lightbox to be installed and activated', 'metaslider-lightbox' ); ?></p>
+            <p><?php _e( 'Meta Slider Lightbox requires Meta Slider and at least one other supported lightbox plugin to be installed and activated', 'metaslider-lightbox' ); ?></p>
         </div>
         <?php
 
     }
 
     /**
-     * Add enable lightbox in slider settings
+     * Add enable lightbox in slider settings and set the corresponding lightbox plugin setting URL
      */
     public function metaslider_lightbox_settings($aFields, $slider) {
 
-        if ( is_plugin_active( 'simple-lightbox/main.php') ) {
+        $active_light_box_plugin = $this->get_active_plugins();
+
+        if ($active_light_box_plugin['active_light_box_plugin'] == "simple_lightbox") {
+
+            $lightbox_settings_url = "themes.php?page=slb_options";
+
+        } elseif ($active_light_box_plugin['active_light_box_plugin'] == "wp_lightbox_2") {
+
+            $lightbox_settings_url = "/options-general.php?page=jquery-lightbox-options";
+        
+        } elseif ($active_light_box_plugin['active_light_box_plugin'] == "lightbox_plus") {
+
+            $lightbox_settings_url = "themes.php?page=lightboxplus";
+        
+        }
+
+        if ( $active_light_box_plugin['active_light_box_plugin'] ) {
   
             if ( isset($slider->id)) {
 
@@ -57,7 +106,7 @@ class MetasliderLightboxAdmin {
                     'lightbox' => array(
                         'priority' => 165,
                         'type' => 'checkbox',
-                        'label' => __( "Open in lightbox?<br><a href='" . get_admin_url() ."themes.php?page=slb_options'>Edit settings</a>", "metaslider-lightbox" ),
+                        'label' => __( "Open in lightbox?<br><a href='" . get_admin_url() . $lightbox_settings_url . "'>Edit settings</a>", "metaslider-lightbox" ),
                         'class' => 'coin flex responsive nivo',
                         'checked' => $msl_lightbox_status === 'true' ? 'checked' : '',
                         'helptext' => __( "All slides will open in a lightbox", "metaslider-lightbox" )

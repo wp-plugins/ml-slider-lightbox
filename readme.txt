@@ -1,7 +1,7 @@
 === Plugin Name ===
 
 Contributors: matchalabs
-Tags: wordpress slideshow lightbox,slideshow lightbox,lightbox,slideshow,slider,wordpress lightbox
+Tags: wordpress slideshow lightbox,meta slider,meta slider lightbox,slideshow lightbox,lightbox,slideshow,slider,wordpress lightbox
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CQ84KC4X8YKW8
 Requires at least: 3.5
 Tested up to: 3.9
