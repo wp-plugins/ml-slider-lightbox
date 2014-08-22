@@ -98,6 +98,15 @@ class MetaSliderLightboxPlugin {
          
                 }
             
+            } elseif ($active_light_box_plugin["active_light_box_plugin"] == "easy_fancybox") {
+
+                if (!strlen($attributes['href'])) {
+
+                    $attributes['href'] = wp_get_attachment_url($slide['id']);
+                    $attributes['rel'] = "lightbox[{$slider_id}]";
+         
+                }
+            
             }
 
         }

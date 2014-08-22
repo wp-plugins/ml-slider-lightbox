@@ -9,8 +9,8 @@ class MetasliderLightboxAdmin {
 
         include_once(ABSPATH.'wp-admin/includes/plugin.php');
 
-        $aFields = [];
-        $slider = [];
+        $aFields = array();
+        $slider = array();
 
         $this->get_active_plugins();
         $this->metaslider_check_lightbox_install();
@@ -33,6 +33,7 @@ class MetasliderLightboxAdmin {
             'simple_lightbox' => is_plugin_active( 'simple-lightbox/main.php'),
             'wp_lightbox_2' => is_plugin_active( 'wp-lightbox-2/wp-lightbox-2.php'),
             'lightbox_plus' => is_plugin_active( 'lightbox-plus/lightboxplus.php'),
+            'easy_fancybox' => is_plugin_active( 'easy-fancybox/easy-fancybox.php'),
             'wp_video_lightbox' => is_plugin_active( 'lightbox-plus/lightboxplus.php')
         );
 
@@ -45,7 +46,6 @@ class MetasliderLightboxAdmin {
         return $active_plugins;
 
     }
-
 
     /**
      * Display a warning on the plugins page if Meta Slider or Simple lightbox isn't activated
@@ -93,6 +93,10 @@ class MetasliderLightboxAdmin {
         } elseif ($active_light_box_plugin['active_light_box_plugin'] == "lightbox_plus") {
 
             $lightbox_settings_url = "themes.php?page=lightboxplus";
+        
+        } elseif ($active_light_box_plugin['active_light_box_plugin'] == "easy_fancybox") {
+
+            $lightbox_settings_url = "/options-media.php";
         
         }
 
