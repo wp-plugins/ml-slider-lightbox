@@ -7,8 +7,8 @@ class MetasliderLightboxAdmin {
      */
     public function __construct() {
 
-        $aFields = [];
-        $slider = [];
+        $aFields = array();
+        $slider = array();
 
         $this->metaslider_check_lightbox_install();
         $this->metaslider_lightbox_settings($aFields, $slider);

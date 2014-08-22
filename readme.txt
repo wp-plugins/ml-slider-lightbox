@@ -1,11 +1,11 @@
 === Plugin Name ===
 
 Contributors: matchalabs
-Tags: wordpress slideshow lightbox,slideshow lightbox,lightbox,slideshow,slider,wordpress lightbox
+Tags: wordpress slideshow lightbox,meta slider,meta slider lightbox,slideshow lightbox,lightbox,slideshow,slider,wordpress lightbox
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CQ84KC4X8YKW8
 Requires at least: 3.5
 Tested up to: 3.9
-Stable tag: 1.0
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,6 +38,9 @@ The not so easy way:
 1. Manage your slideshows using the 'Meta Slider' menu option
 
 == Changelog ==
+
+= 1.1 [22/08/14] =
+* Fix: Array assignment compatibility PHP < v5.4 (reported by and thanks to: andrea_montuori)
 
 = 1.0 [15/08/14] =
 * Initial version
