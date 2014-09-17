@@ -5,7 +5,7 @@ Tags: wordpress slideshow lightbox,meta slider,meta slider lightbox,slideshow li
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CQ84KC4X8YKW8
 Requires at least: 3.5
 Tested up to: 3.9
-Stable tag: 1.1
+Stable tag: 1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -61,8 +61,11 @@ The not so easy way:
 
 == Changelog ==
 
-= 1.1 [20/08/14] =
+= 1.2 [17/09/14] =
 * Support for additional lightbox plugins
+
+= 1.1 [22/08/14] =
+* Fix: Array assignment compatibility PHP < v5.4 (reported by and thanks to: andrea_montuori)
 
 = 1.0 [15/08/14] =
 * Initial version
