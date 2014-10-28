@@ -5,7 +5,7 @@ Tags: wordpress slideshow lightbox,meta slider,meta slider lightbox,slideshow li
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CQ84KC4X8YKW8
 Requires at least: 3.5
 Tested up to: 3.9
-Stable tag: 1.2
+Stable tag: 1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -19,8 +19,9 @@ For use with the popular WordPress plugin <a href="https://wordpress.org/plugins
 <li><a href="https://wordpress.org/plugins/simple-lightbox/">Simple Lightbox</a></li>
 <li><a href="https://wordpress.org/plugins/wp-lightbox-2/">WP Lightbox 2</a></li>
 <li><a href="https://wordpress.org/plugins/lightbox-plus/">Lightbox Plus</a></li>
-<li><a href="http://wordpress.org/plugins/easy-fancybox/">Easy FancyBox</a></li>
+<li><a href="https://wordpress.org/plugins/easy-fancybox/">Easy FancyBox</a></li>
 <li><a href="https://wordpress.org/plugins/wp-video-lightbox/">WP Video Lightbox</a></li>
+<li><a href="https://wordpress.org/plugins/fancy-gallery/">Fancy Gallery</a></li>
 </ul>
 
 == Screenshots ==
@@ -41,8 +42,9 @@ and at least one of the following lightbox plugins:
 <li><a href="https://wordpress.org/plugins/simple-lightbox/">Simple Lightbox</a></li>
 <li><a href="https://wordpress.org/plugins/wp-lightbox-2/">WP Lightbox 2</a></li>
 <li><a href="https://wordpress.org/plugins/lightbox-plus/">Lightbox Plus</a></li>
-<li><a href="http://wordpress.org/plugins/easy-fancybox/">Easy FancyBox</a></li>
+<li><a href="https://wordpress.org/plugins/easy-fancybox/">Easy FancyBox</a></li>
 <li><a href="https://wordpress.org/plugins/wp-video-lightbox/">WP Video Lightbox</a></li>
+<li><a href="https://wordpress.org/plugins/fancy-gallery/">Fancy Gallery</a></li>
 </ul>
 
 If you would like to use a lightbox plugin that isn't supported then let us know and we can look into adding it.
@@ -60,6 +62,9 @@ The not so easy way:
 3. Manage your slideshows using the 'Meta Slider' menu option
 
 == Changelog ==
+
+= 1.3 [28/10/14] =
+* Adds support for Fancy Gallery lightbox plugin (suggested by and thanks to: Zim1)
 
 = 1.2 [17/09/14] =
 * Support for additional lightbox plugins

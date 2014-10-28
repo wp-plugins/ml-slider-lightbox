@@ -5,7 +5,7 @@
  * Plugin Name: Meta Slider Lightbox
  * Plugin URI:  http://www.metaslider.com/
  * Description: Adds lightbox plugin integration to Meta Slider. Requires Meta Slider and one compatible lightbox plugin to be installed and activated.
- * Version:     1.2
+ * Version:     1.3
  * Author:      Matcha Labs
  * Author URI:  http://www.matchalabs.com
  * License:     GPL-2.0+
@@ -34,7 +34,7 @@ class MetaSliderLightboxPlugin {
     /**
      * @var string
      */
-    public $version = '1.2';
+    public $version = '1.3';
 
     /**
      * Init
@@ -108,6 +108,15 @@ class MetaSliderLightboxPlugin {
          
                 }
             
+            } elseif (is_plugin_active("fancy-gallery/plugin.php")) {
+
+                if (!strlen($attributes['href'])) {
+
+                    $attributes['href'] = wp_get_attachment_url($slide['id']);
+                    $attributes['rel'] = "lightbox[{$slider_id}]";
+         
+                }
+            
             }
 
             if (is_plugin_active("wp-video-lightbox/wp-video-lightbox.php")) {
@@ -154,7 +163,8 @@ class MetaSliderLightboxPlugin {
             (is_plugin_active("simple-lightbox/main.php") == true ? "activated" : "not-active"), 
             (is_plugin_active("wp-lightbox-2/wp-lightbox-2.php") == true ? "activated" : "not-active"), 
             (is_plugin_active("lightbox-plus/lightboxplus.php") == true ? "activated" : "not-active"), 
-            (is_plugin_active("easy-fancybox/easy-fancybox.php") == true ? "activated" : "not-active")
+            (is_plugin_active("easy-fancybox/easy-fancybox.php") == true ? "activated" : "not-active"),
+            (is_plugin_active("fancy-gallery/plugin.php") == true ? "activated" : "not-active")
         );
 
         if ((!in_array("activated", $supported_lightbox_plugins) || is_plugin_active('ml-slider/ml-slider.php') == false) && $pagenow == 'plugins.php') {        
@@ -223,6 +233,11 @@ class MetaSliderLightboxPlugin {
 
             $active_lightbox = "Easy Fancybox";
             $lightbox_settings_url = "/options-media.php";
+        
+        } elseif (is_plugin_active("fancy-gallery/plugin.php")) {
+
+            $active_lightbox = "Fancy Gallery";
+            $lightbox_settings_url = "/options-general.php?page=WordPress/Plugin/Fancy_Gallery/Options";
         
         }
 
