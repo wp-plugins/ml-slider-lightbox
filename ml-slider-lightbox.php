@@ -164,7 +164,8 @@ class MetaSliderLightboxPlugin {
             (is_plugin_active("wp-lightbox-2/wp-lightbox-2.php") == true ? "activated" : "not-active"), 
             (is_plugin_active("lightbox-plus/lightboxplus.php") == true ? "activated" : "not-active"), 
             (is_plugin_active("easy-fancybox/easy-fancybox.php") == true ? "activated" : "not-active"),
-            (is_plugin_active("fancy-gallery/plugin.php") == true ? "activated" : "not-active")
+            (is_plugin_active("fancy-gallery/plugin.php") == true ? "activated" : "not-active"),
+            (is_plugin_active("wp-video-lightbox/wp-video-lightbox.php") == true ? "activated" : "not-active")
         );
 
         if ((!in_array("activated", $supported_lightbox_plugins) || is_plugin_active('ml-slider/ml-slider.php') == false) && $pagenow == 'plugins.php') {        
