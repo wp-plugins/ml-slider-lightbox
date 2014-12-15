@@ -34,7 +34,7 @@ class MetaSliderLightboxPlugin {
     /**
      * @var string
      */
-    public $version = '1.3';
+    public $version = '1.4';
 
     /**
      * Init
