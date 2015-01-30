@@ -67,7 +67,7 @@ The not so easy way:
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Manage your slideshows using the 'Meta Slider' menu option
 
-== Changelog 
+== Changelog ==
 
 = 1.5 [30/01/15] =
 * Adds support for FooBox Image Lightbox and Responsive Lightbox by dFactory
