@@ -4,8 +4,8 @@ Contributors: matchalabs
 Tags: wordpress slideshow lightbox,meta slider,meta slider lightbox,slideshow lightbox,lightbox,slideshow,slider,wordpress lightbox
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CQ84KC4X8YKW8
 Requires at least: 3.5
-Tested up to: 3.9
-Stable tag: 1.4
+Tested up to: 4.1
+Stable tag: 1.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -16,13 +16,17 @@ Extends Meta Slider allowing slides to be opened in a lightbox.
 For use with the popular WordPress plugin <a href="https://wordpress.org/plugins/ml-slider/">Meta Slider</a> allowing slides to be opened in a lightbox, using one of the following supported lightbox plugins:<br>
 
 <ul>
+<li><a href="https://wordpress.org/plugins/easy-fancybox/">Easy FancyBox</a></li>
+<li><a href="https://wordpress.org/plugins/foobox-image-lightbox/">FooBox Image Lightbox</a></li>
+<li><a href="https://wordpress.org/plugins/responsive-lightbox/">Responsive Lightbox by dFactory</a></li>
 <li><a href="https://wordpress.org/plugins/simple-lightbox/">Simple Lightbox</a></li>
 <li><a href="https://wordpress.org/plugins/wp-lightbox-2/">WP Lightbox 2</a></li>
 <li><a href="https://wordpress.org/plugins/lightbox-plus/">Lightbox Plus</a></li>
-<li><a href="https://wordpress.org/plugins/easy-fancybox/">Easy FancyBox</a></li>
 <li><a href="https://wordpress.org/plugins/wp-video-lightbox/">WP Video Lightbox</a></li>
 <li><a href="https://wordpress.org/plugins/fancy-gallery/">Fancy Gallery</a></li>
 </ul>
+
+If you would like to use a lightbox plugin that isn't supported then let us know and we can look into adding it.
 
 == Screenshots ==
 
@@ -36,13 +40,15 @@ Requires: <br>
 <li><a href="https://wordpress.org/plugins/ml-slider/">Meta Slider</a> 3.0+ </li>
 </ul>
 
-and at least one of the following lightbox plugins:
+and one of the following lightbox plugins:
 
 <ul>
+<li><a href="https://wordpress.org/plugins/easy-fancybox/">Easy FancyBox</a></li>
+<li><a href="https://wordpress.org/plugins/foobox-image-lightbox/">FooBox Image Lightbox</a></li>
+<li><a href="https://wordpress.org/plugins/responsive-lightbox/">Responsive Lightbox by dFactory</a></li>
 <li><a href="https://wordpress.org/plugins/simple-lightbox/">Simple Lightbox</a></li>
 <li><a href="https://wordpress.org/plugins/wp-lightbox-2/">WP Lightbox 2</a></li>
 <li><a href="https://wordpress.org/plugins/lightbox-plus/">Lightbox Plus</a></li>
-<li><a href="https://wordpress.org/plugins/easy-fancybox/">Easy FancyBox</a></li>
 <li><a href="https://wordpress.org/plugins/wp-video-lightbox/">WP Video Lightbox</a></li>
 <li><a href="https://wordpress.org/plugins/fancy-gallery/">Fancy Gallery</a></li>
 </ul>
@@ -61,7 +67,13 @@ The not so easy way:
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Manage your slideshows using the 'Meta Slider' menu option
 
-== Changelog ==
+== Changelog 
+
+= 1.5 [30/01/15] =
+* Adds support for FooBox Image Lightbox and Responsive Lightbox by dFactory
+
+= 1.4 [15/12/14] =
+* Hides dependancy warning in admin if WP Video Lightbox is activated (reported by and thanks to: vfontj)
 
 = 1.3 [28/10/14] =
 * Adds support for Fancy Gallery lightbox plugin (suggested by and thanks to: Zim1)
