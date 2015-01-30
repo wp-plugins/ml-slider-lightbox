@@ -5,7 +5,7 @@
  * Plugin Name: Meta Slider Lightbox
  * Plugin URI:  http://www.metaslider.com/
  * Description: Adds lightbox plugin integration to Meta Slider. Requires Meta Slider and one compatible lightbox plugin to be installed and activated.
- * Version:     1.2
+ * Version:     1.5
  * Author:      Matcha Labs
  * Author URI:  http://www.matchalabs.com
  * License:     GPL-2.0+
@@ -34,7 +34,7 @@ class MetaSliderLightboxPlugin {
     /**
      * @var string
      */
-    public $version = '1.2';
+    public $version = '1.4';
 
     /**
      * Init
@@ -108,12 +108,39 @@ class MetaSliderLightboxPlugin {
          
                 }
             
-            }
+            } elseif (is_plugin_active("fancy-gallery/plugin.php")) {
 
-            if (is_plugin_active("wp-video-lightbox/wp-video-lightbox.php")) {
+                if (!strlen($attributes['href'])) {
+
+                    $attributes['href'] = wp_get_attachment_url($slide['id']);
+                    $attributes['rel'] = "lightbox[{$slider_id}]";
+         
+                }
+            
+            } elseif (is_plugin_active("responsive-lightbox/responsive-lightbox.php")) {
+				
+                if (strlen($attributes['href']) && ( strpos($attributes['href'], 'youtube.com') !== false || strpos($attributes['href'], 'vimeo.com') !== false )) {
+					 $attributes['rel'] = "wp-video-lightbox[{$slider_id}]";
+				} elseif (strlen($attributes['href']) == false ) {
+				     $attributes['rel'] = "wp-video-lightbox[{$slider_id}]";	
+                	 $attributes['href'] = wp_get_attachment_url($slide['id']);
+                }
+
+            } elseif (is_plugin_active("foobox-image-lightbox/foobox-free.php")) {
+				
+                if (!strlen($attributes['href'])) {
+
+                    $attributes['href'] = wp_get_attachment_url($slide['id']);
+         
+                }
+
+            } elseif (is_plugin_active("wp-video-lightbox/wp-video-lightbox.php")) {
 
                 if (strlen($attributes['href']) && ( strpos($attributes['href'], 'youtube.com') !== false || strpos($attributes['href'], 'vimeo.com') !== false )) {
-                    $attributes['rel'] = 'wp-video-lightbox';
+					 $attributes['rel'] = "wp-video-lightbox[{$slider_id}]";
+				} elseif (strlen($attributes['href']) == false ) {
+				     $attributes['rel'] = "wp-video-lightbox[{$slider_id}]";	
+                	 $attributes['href'] = wp_get_attachment_url($slide['id']);
                 }
 
             }
@@ -121,6 +148,25 @@ class MetaSliderLightboxPlugin {
         }
         
         return $attributes;
+
+    }
+	
+    /**
+     * Add 'gallery' class to metaslider for use with foobox
+     */
+    public function metaslider_class($class, $slider_id, $settings) {
+		
+        if (is_plugin_active("foobox-image-lightbox/foobox-free.php")) {
+			
+            if (!strlen($attributes['href'])) {
+		
+				$class = "metaslider metaslider-{$settings['type']} metaslider-{$slider_id} ml-slider gallery";
+				
+			}
+			
+		}
+		
+        return $class;
 
     }
 
@@ -140,6 +186,8 @@ class MetaSliderLightboxPlugin {
         add_filter('metaslider_nivo_slider_anchor_attributes', array( $this, 'metaslider_lightbox' ), 10, 3);
         add_filter('metaslider_responsive_slider_anchor_attributes', array( $this, 'metaslider_lightbox' ), 10, 3);
         add_filter('metaslider_coin_slider_anchor_attributes', array( $this, 'metaslider_lightbox' ), 10, 3);
+		
+		add_filter('metaslider_css_classes', array( $this, 'metaslider_class' ), 10, 3);
 
     }  
 
@@ -154,7 +202,11 @@ class MetaSliderLightboxPlugin {
             (is_plugin_active("simple-lightbox/main.php") == true ? "activated" : "not-active"), 
             (is_plugin_active("wp-lightbox-2/wp-lightbox-2.php") == true ? "activated" : "not-active"), 
             (is_plugin_active("lightbox-plus/lightboxplus.php") == true ? "activated" : "not-active"), 
-            (is_plugin_active("easy-fancybox/easy-fancybox.php") == true ? "activated" : "not-active")
+            (is_plugin_active("easy-fancybox/easy-fancybox.php") == true ? "activated" : "not-active"),
+            (is_plugin_active("fancy-gallery/plugin.php") == true ? "activated" : "not-active"),
+            (is_plugin_active("wp-video-lightbox/wp-video-lightbox.php") == true ? "activated" : "not-active"),
+			(is_plugin_active("foobox-image-lightbox/foobox-free.php") == true ? "activated" : "not-active"),
+			(is_plugin_active("responsive-lightbox/responsive-lightbox.php") == true ? "activated" : "not-active")
         );
 
         if ((!in_array("activated", $supported_lightbox_plugins) || is_plugin_active('ml-slider/ml-slider.php') == false) && $pagenow == 'plugins.php') {        
@@ -224,7 +276,28 @@ class MetaSliderLightboxPlugin {
             $active_lightbox = "Easy Fancybox";
             $lightbox_settings_url = "/options-media.php";
         
-        }
+        } elseif (is_plugin_active("fancy-gallery/plugin.php")) {
+
+            $active_lightbox = "Fancy Gallery";
+            $lightbox_settings_url = "/options-general.php?page=WordPress/Plugin/Fancy_Gallery/Options";
+        
+        } elseif (is_plugin_active("responsive-lightbox/responsive-lightbox.php")) {
+
+            $active_lightbox = "Responsive Lightbox by dFactory";
+            $lightbox_settings_url = "/options-general.php?page=responsive-lightbox";
+        
+        } elseif (is_plugin_active("foobox-image-lightbox/foobox-free.php")) {
+
+            $active_lightbox = "FooBox Image Lightbox";
+            $lightbox_settings_url = "/options-general.php?page=foobox-free";
+        
+        } elseif (is_plugin_active("wp-video-lightbox/wp-video-lightbox.php")) {
+
+            $active_lightbox = "WP Video Lightbox";
+            $lightbox_settings_url = "/options-general.php?page=wp_video_lightbox";
+        
+        } 	
+		
 
         if (is_plugin_active('ml-slider-lightbox/ml-slider-lightbox.php')) {
   
