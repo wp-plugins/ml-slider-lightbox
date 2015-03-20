@@ -81,7 +81,7 @@ class MetaSliderLightboxPlugin {
 
                 }
 
-            } elseif (is_plugin_active("wp-lightbox-2/wp-lightbox-2.php")) {
+            } elseif (is_plugin_active("wp-lightbox-2/wp-lightbox-2.php") || is_plugin_active("wp-lightbox-2-pro/wp-lightbox-2-pro.php")) {
 
                 if (!strlen($attributes['href'])) {
 
@@ -200,7 +200,8 @@ class MetaSliderLightboxPlugin {
 
         $supported_lightbox_plugins = array(
             (is_plugin_active("simple-lightbox/main.php") == true ? "activated" : "not-active"), 
-            (is_plugin_active("wp-lightbox-2/wp-lightbox-2.php") == true ? "activated" : "not-active"), 
+            (is_plugin_active("wp-lightbox-2/wp-lightbox-2.php") == true ? "activated" : "not-active"),
+			(is_plugin_active("wp-lightbox-2-pro/wp-lightbox-2-pro.php") == true ? "activated" : "not-active"), 
             (is_plugin_active("lightbox-plus/lightboxplus.php") == true ? "activated" : "not-active"), 
             (is_plugin_active("easy-fancybox/easy-fancybox.php") == true ? "activated" : "not-active"),
             (is_plugin_active("fancy-gallery/plugin.php") == true ? "activated" : "not-active"),
@@ -261,7 +262,7 @@ class MetaSliderLightboxPlugin {
             $active_lightbox = "Simple Lightbox";
             $lightbox_settings_url = "themes.php?page=slb_options";
 
-        } elseif (is_plugin_active("wp-lightbox-2/wp-lightbox-2.php")) {
+        } elseif (is_plugin_active("wp-lightbox-2/wp-lightbox-2.php") || is_plugin_active("wp-lightbox-2-pro/wp-lightbox-2-pro.php")) {
 
             $active_lightbox = "WP Lightbox 2";
             $lightbox_settings_url = "/options-general.php?page=jquery-lightbox-options";
