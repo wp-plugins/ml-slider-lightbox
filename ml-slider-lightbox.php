@@ -126,7 +126,7 @@ class MetaSliderLightboxPlugin {
                 	 $attributes['href'] = wp_get_attachment_url($slide['id']);
                 }
 
-            } elseif (is_plugin_active("foobox-image-lightbox/foobox-free.php")) {
+            } elseif (is_plugin_active("foobox-image-lightbox/foobox-free.php") || is_plugin_active("fooboxV2/foobox.php")) {
 				
                 if (!strlen($attributes['href'])) {
 
@@ -207,6 +207,7 @@ class MetaSliderLightboxPlugin {
             (is_plugin_active("fancy-gallery/plugin.php") == true ? "activated" : "not-active"),
             (is_plugin_active("wp-video-lightbox/wp-video-lightbox.php") == true ? "activated" : "not-active"),
 			(is_plugin_active("foobox-image-lightbox/foobox-free.php") == true ? "activated" : "not-active"),
+			(is_plugin_active("fooboxV2/foobox.php") == true ? "activated" : "not-active"),
 			(is_plugin_active("responsive-lightbox/responsive-lightbox.php") == true ? "activated" : "not-active")
         );
 
@@ -287,7 +288,7 @@ class MetaSliderLightboxPlugin {
             $active_lightbox = "Responsive Lightbox by dFactory";
             $lightbox_settings_url = "/options-general.php?page=responsive-lightbox";
         
-        } elseif (is_plugin_active("foobox-image-lightbox/foobox-free.php")) {
+        } elseif (is_plugin_active("foobox-image-lightbox/foobox-free.php") || is_plugin_active("wp-lightbox-2-pro/wp-lightbox-2-pro.php")) {
 
             $active_lightbox = "FooBox Image Lightbox";
             $lightbox_settings_url = "/options-general.php?page=foobox-free";
