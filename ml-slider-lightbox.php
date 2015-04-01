@@ -5,7 +5,7 @@
  * Plugin Name: Meta Slider Lightbox
  * Plugin URI:  http://www.metaslider.com/
  * Description: Adds lightbox plugin integration to Meta Slider. Requires Meta Slider and one compatible lightbox plugin to be installed and activated.
- * Version:     1.5
+ * Version:     1.6
  * Author:      Matcha Labs
  * Author URI:  http://www.matchalabs.com
  * License:     GPL-2.0+
